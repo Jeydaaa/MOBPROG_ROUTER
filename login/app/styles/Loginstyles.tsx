@@ -47,7 +47,7 @@ export const LoginStyles = StyleSheet.create({
     fontFamily: 'monospace',
   },
   errorText: {
-    color: '#FF000',
+    color: '#FF0000',
     textAlign: 'center',
     marginBottom: 10,
   },

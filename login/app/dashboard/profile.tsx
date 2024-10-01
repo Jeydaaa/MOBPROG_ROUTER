@@ -1,20 +1,21 @@
-// /app/dashboard/home.tsx
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useUserContext } from "../context/Usercontext";
-
-
-export default function HomeScreen() {
-  const { user } = useUserContext(); // Get user data from context
-
+const ProfileScreen = () => {
+  const { user } = useUserContext(); 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
-        {user.firstName ? `Hi ! Welcome, ${user.firstName}!` : "Welcome to the Home Screen!"}
-      </Text>
+      {user.firstName ? (
+        <>
+          <Text style={styles.text}>Fullname: {user.firstName} {user.lastName}!</Text>
+          <Text style={styles.text}>Email: {user.email}</Text>
+        </>
+      ) : (
+        <Text style={styles.text}>No user data found.</Text>
+      )}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -28,3 +29,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
+export default ProfileScreen;

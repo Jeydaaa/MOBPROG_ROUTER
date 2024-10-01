@@ -5,17 +5,17 @@ import { useState } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const RegisterPage = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  
-  
+
   const router = useRouter();
 
   const handleRegister = async () => {
-  
-    if (!email || !password || !confirmPassword) {
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
       setErrorMessage('Please fill all fields.');
       return;
     }
@@ -26,7 +26,8 @@ const RegisterPage = () => {
     }
 
     try {
-    
+      await AsyncStorage.setItem('userFirstName', firstName);
+      await AsyncStorage.setItem('userLastName', lastName);
       await AsyncStorage.setItem('userEmail', email);
       await AsyncStorage.setItem('userPassword', password);
 
@@ -42,7 +43,25 @@ const RegisterPage = () => {
     <View style={RegisterStyles.container}>
       <Text style={RegisterStyles.title}>Register</Text>
       {errorMessage ? <Text style={RegisterStyles.errorText}>{errorMessage}</Text> : null}
-      
+
+      <View style={RegisterStyles.nameContainer}>
+        <TextInput
+          placeholder="First Name"
+          value={firstName}
+          onChangeText={setFirstName}
+          style={RegisterStyles.halfInput}
+          placeholderTextColor="#ecf0f1"
+        />
+
+        <TextInput
+          placeholder="Last Name"
+          value={lastName}
+          onChangeText={setLastName}
+          style={[RegisterStyles.halfInput, RegisterStyles.lastNameInput]}
+          placeholderTextColor="#ecf0f1"
+        />
+      </View>
+
       <TextInput
         placeholder="Email"
         value={email}
@@ -50,7 +69,7 @@ const RegisterPage = () => {
         style={RegisterStyles.input}
         placeholderTextColor="#ecf0f1"
       />
-      
+
       <TextInput
         placeholder="Password"
         value={password}
@@ -59,7 +78,7 @@ const RegisterPage = () => {
         style={RegisterStyles.input}
         placeholderTextColor="#ecf0f1"
       />
-      
+
       <TextInput
         placeholder="Confirm Password"
         value={confirmPassword}

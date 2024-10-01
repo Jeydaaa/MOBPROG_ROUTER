@@ -26,6 +26,25 @@ export const RegisterStyles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'monospace',
   },
+  nameContainer: {
+    flexDirection: 'row',  
+    justifyContent: 'space-between',  
+    marginBottom: 12,
+  },
+  halfInput: {
+    height: 50,
+    borderColor: '#85929e',
+    borderWidth: 2,
+    borderRadius: 10,
+    color: '#FFFFFF',
+    paddingHorizontal: 16,
+    fontSize: 16,
+    fontFamily: 'monospace',
+    width: '48%',  
+  },
+  lastNameInput: {
+    marginLeft: 8,  
+  },
   button: {
     backgroundColor: '#5d6d7e',
     borderRadius: 10,
@@ -47,7 +66,7 @@ export const RegisterStyles = StyleSheet.create({
     fontFamily: 'monospace',
   },
   errorText: {
-    color: '#FF000',
+    color: '#FF0000',
     textAlign: 'center',
     marginBottom: 10,
   },
