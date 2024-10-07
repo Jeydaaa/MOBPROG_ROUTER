@@ -1,13 +1,13 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth } from "firebase/auth";
+import { getDatabase, ref, set } from "firebase/database";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAoYVWtp1kHvf0slHyv4-Df7VQRg-PtUp4",
   authDomain: "notifyme-7e2ea.firebaseapp.com",
+  databaseURL: "https://notifyme-7e2ea-default-rtdb.firebaseio.com",
   projectId: "notifyme-7e2ea",
   storageBucket: "notifyme-7e2ea.appspot.com",
   messagingSenderId: "25316775865",
@@ -19,6 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firebase Authentication
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
-export { auth };
+// Initialize Firebase Realtime Database
+export const db = getDatabase(app);

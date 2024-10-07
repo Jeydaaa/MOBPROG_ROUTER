@@ -1,12 +1,10 @@
-// /app/dashboard/home.tsx
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useUserContext } from "../context/Usercontext";
 
 
 export default function HomeScreen() {
-  const { user } = useUserContext(); // Get user data from context
-
+  const { user } = useUserContext(); 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
